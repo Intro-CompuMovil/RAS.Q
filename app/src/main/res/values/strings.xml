@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">RasQ</string>
+    <string name="init_NameTxt">Nombre Completo</string>
+    <string name="init_emailTxt">correo@test.com</string>
+    <string name="settingsBtnTxt">Configuracion</string>
+    <string name="paymentBtnTxt">Pagos</string>
+    <string name="messagesBtnTxt">Mensajes</string>
+    <string name="phoneNumLblTxt">Telefono Celular:</string>
+    <string name="initPhoneTxt">+1-123-456-7890</string>
+    <string name="verificationStatusLblTxt">Estado Cuenta:</string>
+    <string name="initVerificationStatusTxt">Verificado</string>
+    <string name="addressLblTxt">Direccion</string>
+    <string name="initAddressTxt">Cra 6 #45-12 apt 502</string>
+    <string name="logoutBtnTxt">Cerrar Sesion</string>
+    <string name="welcomeTxt">Inicio de Sesion</string>
+    <string name="loginTxt">Credenciales:</string>
+    <string name="emailHintTxt">Correo Electronico</string>
+    <string name="passwordHintTxt">Contraseña</string>
+    <string name="loginBtnTxt">Iniciar Sesion</string>
+    <string name="signupTxt"><u>Registrate</u></string>
+    <string name="nameHintTxt">Nombre Completo</string>
+    <string name="phoneHintTxt">Telefono Celular</string>
+    <string name="addressHintTxt">Direccion</string>
+    <string name="signupBtnTxt">Crear Cuenta</string>
+    <string name="signup_welcometxt">Ingresa tus datos:</string>
+    <string name="confirmPasswordHintTxt">Confirma tu Contraseña</string>
+    <string name="homeMenuTxt">Menu Principal</string>
+    <string name="newEventMenuTxt">Crear Evento</string>
+    <string name="quoteServiceMenuTxt">Cotizar</string>
+    <string name="Profile_btn_description">Boton al Perfil</string>
+    <string name="NewsletterTitleTxt">Notificaciones</string>
+    <string name="initQuoteFrameTxt">Cotizaciones</string>
+    <string name="init_request_event_txt">Solicitar Servicio</string>
+    <string name="Capture_btn_description">Boton de Captura</string>
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/rasq_lightest_purple"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/rasq_logo"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/signup_welcometxt"
+            android:textAlignment="center"
+            android:textColor="@color/rasq_dark_purple"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_btnbox"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <EditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/nameHintTxt"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/emailHintTxt"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="password"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/passwordHintTxt"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="password"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/confirmPasswordHintTxt"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="phone"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/phoneHintTxt"
+                android:inputType="phone"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:autofillHints="postalAddress"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/addressHintTxt"
+                android:inputType="textPostalAddress"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background_longbtn"
+            android:text="@string/signupBtnTxt"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
