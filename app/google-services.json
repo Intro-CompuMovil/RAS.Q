@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089621800148",
+    "project_id": "rasq-8a9fc",
+    "storage_bucket": "rasq-8a9fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089621800148:android:2023f76906555e4cd63741",
+        "android_client_info": {
+          "package_name": "com.example.rasq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeQV68RBr0mljijXz2IA03Jih4xRm2YjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

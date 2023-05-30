@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rasq_lightest_purple"
+    android:orientation="horizontal"
+    android:padding="10dp">
+    <ImageView
+        android:id="@+id/imgContact"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:layout_marginTop="300dp"
+        app:srcCompat="@android:drawable/ic_input_get"
+        />
+    <TextView
+        android:id="@+id/idContacto"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="0.25"
+        android:gravity="center"
+        android:textColor="@color/rasq_dark_purple"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="300dp"/>
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_weight="0.25"
+        android:layout_marginTop="300dp"
+        android:gravity="center"/>
+
+
+</LinearLayout>
+
+

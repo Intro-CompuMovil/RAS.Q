@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item android:title="@string/newEventMenuTxt"
+        android:icon="@drawable/event_icon"
+        android:id="@+id/eventMenu"
+    />
+
+    <item android:title="@string/homeMenuTxt"
+        android:icon="@drawable/home_icon"
+        android:id="@+id/homeMenu"
+    />
+
+    <item android:title="@string/quoteServiceMenuTxt"
+        android:icon="@drawable/quotes_icon"
+        android:id="@+id/quoteMenu"
+        />
+
+</menu>

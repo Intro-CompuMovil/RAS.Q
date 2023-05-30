@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/rasq_lightest_purple"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/rasq_logo"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtNewEventRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/new_event_request_title_txt"
+            android:textAlignment="center"
+            android:textColor="@color/rasq_dark_purple"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_btnbox"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <EditText
+                android:id="@+id/editPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Titulo de Evento"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="16dp" />
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/editAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="postalAddress"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/event_address_hint_txt"
+                android:inputType="textPostalAddress"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/eventoMapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Definir Ubicación en el Mapa"
+                android:background="@drawable/background_longbtn"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="@string/event_description_hint_txt"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:padding="16dp"
+                android:textColor="@color/rasq_dark_purple"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNewEventRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background_longbtn"
+            android:text="@string/create_request_btn_txt"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

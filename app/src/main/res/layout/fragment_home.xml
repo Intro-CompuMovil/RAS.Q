@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controllers.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/rasq_lightest_purple">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <ImageButton
+                    android:id="@+id/btn_profile"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_button"
+                    android:contentDescription="@string/Profile_btn_description"
+                    android:padding="12dp"
+                    android:src="@drawable/user_profile_icon" />
+
+                <ImageView
+                    android:id="@+id/app_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.3"
+                    android:src="@drawable/rasq_logo"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/eventsLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_profile"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/event_request_lbl_txt"
+                    android:textSize="16sp" />
+
+                <ListView
+                    android:id="@+id/events_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@+id/eventsLbl"
+                    android:alpha="0.6"
+                    android:background="@drawable/background_btnbox"
+                    android:visibility="visible" />
+
+                <ImageButton
+                    android:id="@+id/btn_new_event_request"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@+id/events_list"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/round_button"
+                    android:contentDescription="boton a crear nueva peticion de evento"
+                    android:padding="12dp"
+                    android:src="@android:drawable/ic_menu_add" />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

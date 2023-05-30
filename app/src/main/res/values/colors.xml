@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rasq_light_purple">#B77DFD</color>
+    <color name="rasq_purple">#4400A5</color>
+    <color name="rasq_alt_purple">#622AE1</color>
+    <color name="rasq_light_gray">#D8D8D8</color>
+    <color name="rasq_lightest_purple">#C9B0FF</color>
+    <color name="rasq_dark_purple">#27006D</color>
+    <color name="rasq_alt_light_gray">#919191</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF1E1E</color>
+</resources>
