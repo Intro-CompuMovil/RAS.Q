@@ -6,6 +6,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -27,6 +28,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -37,6 +40,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
+import java.util.*
 
 const val EXTRA_SELECTED_MARKER = "extra_selected_marker"
 
@@ -50,6 +54,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     private val database = FirebaseDatabase.getInstance()
     private lateinit var myRef: DatabaseReference
     private lateinit var storageReference: StorageReference
+    private var polyline: Polyline? = null
+
 
     /**
      * Método que se ejecuta al crear la actividad.
@@ -175,77 +181,73 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
      * Método que se ejecuta cuando se hace clic en el mapa.
      */
     override fun onMapClick(latLng: LatLng) {
-        // Agregar un marcador en la posición donde se hizo clic
-        selectedMarker = KeyMarker(latLng.latitude, latLng.longitude, "Nuevo marcador")
-        mMap?.addMarker(MarkerOptions().position(latLng).title("Nuevo marcador"))
+        // Obtener la ubicación actual
+        val currentLocation = LatLng(location?.latitude ?: 0.0, location?.longitude ?: 0.0)
 
+        // Eliminar todos los marcadores existentes en el mapa
+        mMap?.clear()
+
+        // Agregar un nuevo marcador en la posición donde se hizo clic
+        selectedMarker = KeyMarker(latLng.latitude, latLng.longitude, "")
+
+        // Obtener la dirección del lugar utilizando geocodificación inversa
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+        if (addresses != null) {
+            if (addresses.isNotEmpty()) {
+                val address = addresses?.get(0)
+                val addressText = address?.getAddressLine(0)
+                selectedMarker?.name = addressText
+
+                // Agregar el marcador con la dirección como título
+                mMap?.addMarker(MarkerOptions().position(latLng).title(addressText))
+            } else {
+                // Si no se encuentra la dirección, agregar el marcador con un título genérico
+                mMap?.addMarker(MarkerOptions().position(latLng).title("Lugar desconocido"))
+            }
+        }
+
+        // Crear la polyline con los puntos de la ubicación actual y el marcador
+        polyline?.remove() // Eliminar la polyline existente, si la hay
+        polyline = mMap?.addPolyline(
+            PolylineOptions()
+                .add(currentLocation, latLng)
+                .color(ContextCompat.getColor(this, R.color.black)) // Color de la línea (puedes cambiarlo según tus necesidades)
+        )
 
         // Puedes guardar la ubicación en Firebase u realizar otras acciones según tus necesidades
         // ...
     }
+
 
     /**
      * Método que se ejecuta cuando el mapa está listo para ser utilizado.
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap!!.uiSettings.isScrollGesturesEnabledDuringRotateOrZoom = true
-        mMap!!.uiSettings?.isZoomControlsEnabled = true
-        mMap!!.uiSettings?.isZoomGesturesEnabled = true
-        mMap!!.isMyLocationEnabled = true
+
+        // Habilitar el botón "Mi ubicación" en el mapa
+        mMap?.isMyLocationEnabled = true
+        mMap?.setOnMyLocationButtonClickListener(this)
         mMap?.setOnMapClickListener(this)
 
-        val jsonString: String
-        try {
-            val inputStream = assets.open("locations.json")
-            jsonString = inputStream.bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            Log.e("MyApp", "Error al leer el archivo JSON: ${ioException.message}")
-            return
-        }
-
-        val listMarkerType = object : TypeToken<List<KeyMarker>>() {}.type
-        val listMarkers: List<KeyMarker> = Gson().fromJson(jsonString, listMarkerType)
-        if (listMarkers != null) {
-            for (marker in listMarkers) {
-                val pos = LatLng(marker.latitude ?: 0.0, marker.longitude ?: 0.0)
-                mMap!!.addMarker(MarkerOptions().position(pos).title(marker.name))
-            }
-        } else {
-            Log.e("MyApp", "La lista de marcadores es nula")
-        }
-
-        if (jsonString.isNullOrEmpty()) {
-            Log.e("MyApp", "El archivo JSON está vacío")
-            return
-        }
-
+        // Obtener la ubicación actual del usuario
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val isLocationEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        if (!isLocationEnabled) {
-            Toast.makeText(this, "El proveedor de ubicación no está habilitado", Toast.LENGTH_LONG)
-                .show()
-        }
-
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+            ) == PackageManager.PERMISSION_GRANTED
         ) {
-            requestLocationPermission()
-        } else {
-            enableMyLocation()
+            val lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            location = lastKnownLocation
         }
-
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(37.7749, -122.4194), 10f))
     }
 
     /**
      * Método que se ejecuta cuando se hace clic en el botón de ubicación propia.
      */
     override fun onMyLocationButtonClick(): Boolean {
-        // Aquí puedes centrar el mapa en la ubicación actual del usuario
-        // ...
+        //Toast.makeText(this, "Botón 'Mi ubicación' presionado.", Toast.LENGTH_SHORT).show()
         return false
     }
 
@@ -295,5 +297,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
         private const val PATH_USERS = "users/"
+        private const val TAG = "MapActivity"
     }
 }
