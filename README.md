@@ -1,4 +1,4 @@
-Desarrollo por: Juan Pablo Gozalez, Andres Felipe Duarte, Juan Manuel Aguiar
+Desarrollo por: Juan Pablo Gozalez, Andres Felipe Duarte, Alejandro Roa, Santiago Camacho
 
 RAS.Q es una aplicación encaminada a facilitar la gestión de eventos
 privados para personas que deseen organizarlos sin ningún tipo de contratiempo,
